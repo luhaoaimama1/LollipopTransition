@@ -1,0 +1,74 @@
+认知:
+List页面(A)
+ViewPagerActvitity(B页面)
+Frament(frag)
+
+postponeEnterTransition() 方法来暂时阻止启动共享元素 Transition。之后，
+你需要在共享元素准备好后调用 startPostponedEnterTransition来恢复过渡效果。
+
+#走过的坑:
+###监听设置
+因为是A->B B-back-A
+A:setExitSharedElementCallback(exitCallback);
+B:setEnterSharedElementCallback(mCallback);
+
+###那么去的流程(go)
+从A->B->显示frag
+1.list:Glide加载ImageView后不能给ImageView设置tag;所以我给他Parent(也是itemLayout里的)设置了tag
+
+2.Pair.create(view.findViewById(R.id.ivv)这里就包含了 view.setTransitionName了 所以不需要单独设置
+
+3.传递的是时候 判断是否  点击的item图片是否加载成功, 这样接受的那头才能和他一致,如果没加载成功 那头也setImageBm没加载成功的图 
+然后过渡完成(Transition transition = getActivity().getWindow().getSharedElementEnterTransition() 然后添加监听)
+后再加载图片  这样就完美了
+
+4.时刻记住viewPager现在的fragment 因为这里存着要设置  setTransitionName了的Name;
+viewPager  里的 setPrimaryItem 得到currentFrament;但是这个有点不准确
+就是当滑动到X.99的时候  虽然select是X+1了  但是因为onScroll状态没停下来等停下来  getItem,setPrimaryItem等方法才会继续走 
+所以当前的是不正确的; 我们需要通过 index 和 getSupportFragmentManager找到真正的Fragment;然后设置里面的ImageView setTransitionName了的Name
+
+5.setExitSharedElementCallback 在这个监听里
+onMapSharedElements(List<String> names, Map<String, View> sharedElements) 
+names 存着  一些不同的 setTransitionName;
+sharedElements 存着 与setTransitionName 对应的view,是map 所以你要明白 如果两个view 设置了一个名字
+那么第二个会把第一个替换掉
+
+6.要知道 setEnterSharedElementCallback里的 onMapSharedElements 这个什么时候走,
+返回的时候 :在finishAfterTransition方法体结束 后面走;那么我设置一个mIsReturning 来表示是否是共享元素  返回动画即可;  
+来的时候:startPostponedEnterTransition 完事后走;
+
+7 在finishAfterTransition(onBackPressed 里默认会走) 可以设置
+ setResult(233, new Intent().putExtra("position", mCurrentPosition));
+
+
+
+###回来的流程:(back)
+显示frag->B——back——A
+ 
+8.onActivityReenter(必须是 上一个页面 在finishAfterTransition setResult)才能接值了
+
+(1)B setResult(233, new Intent().putExtra("position", mCurrentPosition));
+
+(2) 并且可以在这里面设置 标示位置isReturn   true; 在点击item的时候 设置成false;
+
+(3)注意 recyclerView scroll 的问题:
+scrollToPosition:会发生问题 没有让他全部显示出来 / 干脆不滑动(本来应该滑动的);
+scrollToPositionWithOffset(用这个):layout.scrollToPositionWithOffset(returnIndex, 0);//这个方法略屌 比下面的精准  让整个item显示出来了
+layout最好用 自己的recyclerView的引用
+
+9.要知道  setExitSharedElementCallback里的onMapSharedElements
+去的时候:startActivity之后走
+回来的时候:在onActivityReenter方法体结束 后面走,通过用  标示位置isReturn 则可知道 是去是回;
+
+###总结:
+总之让场景 确定下来 在onMapSharedElements 对元素更改完毕 ,在进行 共享动画即可;
+
+
+
+
+额外:
+ getWindow().setSharedElement....Transition 可以设置共享动画 ,不过自动的就好
+    
+ 不知道为啥 getWindow().requestFeature(Window.FEATURE_CONTENT_TRANSITIONS);
+ 不设置 和xml不设置也是可以呢
+    

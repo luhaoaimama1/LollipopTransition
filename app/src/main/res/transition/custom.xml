@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<transitionSet xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--默认是together 因为  new TransitionSet 默认就是together-->
+    <fade>
+        <targets>
+            <target android:excludeId="@id/red"></target>
+            <target android:excludeId="@android:id/statusBarBackground" />
+            <target android:excludeId="@android:id/navigationBarBackground" />
+        </targets>
+    </fade>
+    >
+    <changeBounds />
+    <changeTransform />
+    <changeClipBounds />
+    <changeImageTransform />
+    <targets>
+        <target android:excludeId="@android:id/statusBarBackground" />
+        <target android:excludeId="@android:id/navigationBarBackground" />
+    </targets>
+</transitionSet>

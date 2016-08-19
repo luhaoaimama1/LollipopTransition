@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="zone.com.transitionstudy.MainActivity">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true">
+
+        <Button
+            android:id="@+id/transition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Transition框架研究" />
+
+        <Button
+            android:id="@+id/bt_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="内容动画" />
+
+        <RadioGroup
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Fade"
+                android:id="@+id/bt_fade"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Slide"
+                android:id="@+id/bt_slide"
+                android:checked="false" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Explode"
+                android:id="@+id/bt_explode"
+                android:checked="false" />
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Custom"
+                android:id="@+id/bt_custom"
+                android:checked="false" />
+        </RadioGroup>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="共享动画专题" />
+        <Button
+            android:id="@+id/bt_share_normal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="普通的共享动画" />
+        <Button
+            android:id="@+id/bt_share_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="列表的共享动画" />
+    </LinearLayout>
+</RelativeLayout>
