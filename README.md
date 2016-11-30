@@ -13,7 +13,7 @@ allprojects {
 ```
 Step 2. Add the dependency
 
-> compile 'com.github.luhaoaimama1:zone-sdk:[Latest release](https://github.com/luhaoaimama1/LollipopTransition/releases)'
+> compile 'com.github.luhaoaimama1:LollipopTransition:[Latest release](https://github.com/luhaoaimama1/LollipopTransition/releases)'
     
 #Demo演示
 [视频链接地址](http://t.cn/Rtnic2i)
