@@ -6,7 +6,6 @@ group = 'com.github.luhaoaimama1'
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.0"
-
     defaultConfig {
         minSdkVersion 16
         targetSdkVersion 24
@@ -22,10 +21,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })

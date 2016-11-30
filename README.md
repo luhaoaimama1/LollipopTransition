@@ -38,6 +38,7 @@ Step 2. Add the dependency
 ##共享动画 
 >流程图
 >Tips:MapSharedElementsCallback 共享动画执行之前最后走的；
+
 ![](./demo/processon.png)
 ####1.普通的共享动画使用；
 第一个Activity
