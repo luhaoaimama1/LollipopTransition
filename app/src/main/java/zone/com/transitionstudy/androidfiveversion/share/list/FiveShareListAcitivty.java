@@ -1,4 +1,4 @@
-package zone.com.transitionstudy.five.share.list;
+package zone.com.transitionstudy.androidfiveversion.share.list;
 
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;
@@ -26,7 +26,7 @@ import java.util.Map;
 
 import zone.com.transitionstudy.Images;
 import zone.com.transitionstudy.R;
-import zone.com.transitionstudy.five.share.normal.FiveShareNormalAcitivty;
+import zone.com.transitionstudy.androidfiveversion.share.normal.FiveShareNormalAcitivty;
 
 /**
  * Created by fuzhipeng on 16/8/17.

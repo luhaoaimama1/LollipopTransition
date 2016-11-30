@@ -26,11 +26,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".TransitionActivity"></activity>
-        <activity android:name=".five.FiveContentAcitivity"></activity>
-        <activity android:name=".five.share.normal.FiveShareNormalAcitivty"></activity>
-        <activity android:name=".five.share.normal.FiveShareNormal2Acitivty"></activity>
-        <activity android:name=".five.share.list.FiveShareListAcitivty"></activity>
-        <activity android:name=".five.share.list.SharePicAcitivity"></activity>
+        <activity android:name=".androidfiveversion.FiveContentAcitivity"></activity>
+        <activity android:name=".androidfiveversion.share.normal.FiveShareNormalAcitivty"></activity>
+        <activity android:name=".androidfiveversion.share.normal.FiveShareNormal2Acitivty"></activity>
+        <activity android:name=".androidfiveversion.share.list.FiveShareListAcitivty"></activity>
+        <activity android:name=".androidfiveversion.share.list.SharePicAcitivity"></activity>
+
+        <activity android:name=".androidfiveversionlib.FiveContent_LibAcitivity"></activity>
+        <activity android:name=".androidfiveversionlib.share.normal.FiveShareNormal2_LibAcitivty"></activity>
+        <activity android:name=".androidfiveversionlib.share.normal.FiveShareNormal_LibAcitivty"></activity>
+        <activity android:name=".androidfiveversionlib.share.list.FiveShareList_LibAcitivty"></activity>
+        <activity android:name=".androidfiveversionlib.share.list.SharePic_LibAcitivity"></activity>
     </application>
 
 </manifest>

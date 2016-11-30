@@ -1,4 +1,4 @@
-package zone.com.transitionstudy.five;
+package zone.com.transitionstudy.androidfiveversionlib;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -11,13 +11,12 @@ import android.transition.TransitionInflater;
 import android.view.Gravity;
 import android.view.Window;
 
-import butterknife.ButterKnife;
 import zone.com.transitionstudy.R;
 
 /**
  * Created by fuzhipeng on 16/8/17.
  */
-public class FiveContentAcitivity extends AppCompatActivity {
+public class FiveContent_LibAcitivity extends AppCompatActivity {
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {

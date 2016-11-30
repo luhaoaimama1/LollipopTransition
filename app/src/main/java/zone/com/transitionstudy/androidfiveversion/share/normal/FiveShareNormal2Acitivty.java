@@ -1,4 +1,4 @@
-package zone.com.transitionstudy.five.share.normal;
+package zone.com.transitionstudy.androidfiveversion.share.normal;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -21,8 +21,8 @@ public class FiveShareNormal2Acitivty extends AppCompatActivity {
         setContentView(R.layout.activity_share_normal2);
 
         //共享元素 需要 transitionName 相同
-        findViewById(R.id.view).setTransitionName(FiveShareNormalAcitivty.BG);
-        findViewById(R.id.imageView).setTransitionName(FiveShareNormalAcitivty.PIC);
+        findViewById(R.id.bg).setTransitionName(FiveShareNormalAcitivty.BG);
+        findViewById(R.id.iv).setTransitionName(FiveShareNormalAcitivty.PIC);
 
         //准备好了  开始吧
         startPostponedEnterTransition();

@@ -1,4 +1,4 @@
-package zone.com.transitionstudy.five.share.normal;
+package zone.com.transitionstudy.androidfiveversion.share.normal;
 
 import android.annotation.TargetApi;
 import android.app.ActivityOptions;

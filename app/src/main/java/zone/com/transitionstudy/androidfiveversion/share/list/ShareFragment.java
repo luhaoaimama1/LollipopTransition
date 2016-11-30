@@ -1,10 +1,8 @@
-package zone.com.transitionstudy.five.share.list;
+package zone.com.transitionstudy.androidfiveversion.share.list;
 
 
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -16,15 +14,12 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.drawable.GlideDrawable;
-import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.animation.GlideAnimation;
 import com.bumptech.glide.request.target.SimpleTarget;
-import com.bumptech.glide.request.target.Target;
 
 import zone.com.transitionstudy.Images;
 import zone.com.transitionstudy.R;
-import zone.com.transitionstudy.five.share.normal.FiveShareNormalAcitivty;
+import zone.com.transitionstudy.androidfiveversion.share.normal.FiveShareNormalAcitivty;
 
 /**
  * Created by fuzhipeng on 16/8/17.
@@ -44,7 +39,7 @@ public class ShareFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        imageView = (ImageView) view.findViewById(R.id.imageView);
+        imageView = (ImageView) view.findViewById(R.id.iv);
         imageView.setTransitionName(FiveShareNormalAcitivty.PIC);
         if (!getArguments().getBoolean("havePic")) {
             imageView.setImageBitmap(null);
