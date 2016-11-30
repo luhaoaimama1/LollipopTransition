@@ -9,10 +9,10 @@ import java.util.Map;
 /**
  * Created by fuzhipeng on 2016/11/29.
  *
- *第一页 过去    ShareHelper.from(activity).enterAni(transition).exitAni(context,R.layout)
+ *第一页 过去    ShareHelper.from(activity)
  *              .exitcallback(callback).onMapSharedElements(callback).pair(iv,iv2,iv3).go(intent).back(callback);
  *
- *第二页 显示    ShareHelper.to(activity).enterAni(transition).exitAni(context,R.layout).setContent()
+ *第二页 显示    ShareHelper.to(activity).setContent()
  *              .enterCallbcak(callback).onMapSharedElements(callback).pair(iv,iv2,iv3).show(callback).back(callback);
  *
  *         ShareHelper.finishAfterTransition(activty)

@@ -7,6 +7,7 @@ postponeEnterTransition() 方法来暂时阻止启动共享元素 Transition。�
 你需要在共享元素准备好后调用 startPostponedEnterTransition来恢复过渡效果。
 
 #走过的坑:
+
 ###监听设置
 因为是A->B B-back-A
 A:setExitSharedElementCallback(exitCallback);
@@ -30,8 +31,7 @@ viewPager  里的 setPrimaryItem 得到currentFrament;但是这个有点不准�
 5.setExitSharedElementCallback 在这个监听里
 onMapSharedElements(List<String> names, Map<String, View> sharedElements) 
 names 存着  一些不同的 setTransitionName;
-sharedElements 存着 与setTransitionName 对应的view,是map 所以你要明白 如果两个view 设置了一个名字
-那么第二个会把第一个替换掉
+sharedElements 存着 与setTransitionName 对应的view,是map 
 
 6.要知道 setEnterSharedElementCallback里的 onMapSharedElements 这个什么时候走,
 返回的时候 :在finishAfterTransition方法体结束 后面走;那么我设置一个mIsReturning 来表示是否是共享元素  返回动画即可;  
@@ -62,8 +62,6 @@ layout最好用 自己的recyclerView的引用
 
 ###总结:
 总之让场景 确定下来 在onMapSharedElements 对元素更改完毕 ,在进行 共享动画即可;
-
-
 
 
 额外:

@@ -7,6 +7,7 @@ import android.os.Build;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.SharedElementCallback;
 import android.view.View;
+
 import java.util.Map;
 
 import zone.com.transition.share.callback.MapSharedElementsCallback;
@@ -31,14 +32,14 @@ public class To extends Parent {
     }
 
     To finish() {
-        isReturn=true;
+        isReturn = true;
         if (mBackCallBack != null)
             mBackCallBack.setResult(mBack);
         return this;
     }
 
     public To back(BackCallBack mBackCallBack) {
-        this.mBackCallBack=mBackCallBack;
+        this.mBackCallBack = mBackCallBack;
         return this;
     }
 
@@ -55,8 +56,6 @@ public class To extends Parent {
 
 
     public To pairs(Map<String, View> sharedElements, View... views) {
-        if (views == null)
-            return this;
         this.views = views;
         for (int i = 0; i < views.length; i++) {
             String transitionName = getShareNameByIndex(i);
@@ -95,8 +94,8 @@ public class To extends Parent {
      */
     public To show(PrepareCallback mPrepareCallback) {
         FragmentActivity activityTemp = activity.get();
-        if(activityTemp==null)
-           return this;
+        if (activityTemp == null)
+            return this;
         this.mPrepareCallback = mPrepareCallback;
         isReturn = false;
         activityTemp.postponeEnterTransition();//其start在fragment里呢
@@ -107,15 +106,14 @@ public class To extends Parent {
         else
             throw new IllegalStateException("please use method:setContentView");
 
-        if (mMapSharedElementsCallback == null) {
-            if (ids != null) {
-                views = new View[ids.length];
-                for (int i = 0; i < ids.length; i++) {
-                    views[i] = activityTemp.findViewById(ids[i]);
-                }
+        if (ids != null) {
+            views = new View[ids.length];
+            for (int i = 0; i < ids.length; i++) {
+                views[i] = activityTemp.findViewById(ids[i]);
             }
-            pairs(null, views);
         }
+        if (views != null)
+            pairs(null, views);
 
         setEnterSharedElementCallback(activityTemp);
         if (mPrepareCallback != null)
@@ -147,7 +145,8 @@ public class To extends Parent {
     public interface PrepareCallback {
         void prepare(Prepare prepare);
     }
-    public interface BackCallBack{
+
+    public interface BackCallBack {
         void setResult(Back mBack);
     }
 }
