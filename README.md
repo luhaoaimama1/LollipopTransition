@@ -18,6 +18,29 @@ Step 2. Add the dependency
 #Demo演示
 [视频链接地址](http://t.cn/Rtnic2i)
 ![](./demo/share.gif)
+##配置阶段
+```
+public class BaseActivity extends AppCompatActivity {
+    @Override
+    public void onActivityReenter(int resultCode, Intent data) {
+        super.onActivityReenter(resultCode, data);
+        ShareTransition.onActivityReenter(this,resultCode,data);
+    }
+
+    @Override
+    protected void onDestroy() {
+        ShareTransition.destory(this);
+        super.onDestroy();
+    }
+
+    @Override
+    public void finishAfterTransition() {
+        ShareTransition.finishAfterTransition(this);
+        super.finishAfterTransition();
+    }
+}
+```
+
 ##5.0Activity动画
 5.0动画跳转的特殊方式；
 >主要是准备场景Scene
