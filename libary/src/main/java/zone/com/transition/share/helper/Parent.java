@@ -11,7 +11,6 @@ import android.os.Parcelable;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.SharedElementCallback;
 import android.view.View;
-import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
 import zone.com.transition.share.callback.MapSharedElementsCallback;
@@ -31,11 +30,11 @@ public class Parent {
     protected View[] views;
     protected int[] ids;
 
-    protected WeakReference<FragmentActivity> activity;
+    protected FragmentActivity activity;
 
     protected Parent(Activity activity) {
         if (activity instanceof FragmentActivity)
-            this.activity = new WeakReference<FragmentActivity>((FragmentActivity) activity);
+            this.activity = (FragmentActivity)activity;
         else
             throw new IllegalStateException("actvitiy must be FragmentActivity");
     }
@@ -45,13 +44,13 @@ public class Parent {
     }
 
     void prepareOK() {
-        if (activity.get() != null)
-            activity.get().startPostponedEnterTransition();
+        if (activity!= null)
+            activity.startPostponedEnterTransition();
     }
 
     void setResult(int resultCode, Intent data) {
-        if (activity.get() != null)
-            activity.get().setResult(resultCode, data);
+        if (activity != null)
+            activity.setResult(resultCode, data);
     }
 
     public boolean isReturn() {

@@ -93,33 +93,32 @@ public class To extends Parent {
      * @return
      */
     public To show(PrepareCallback mPrepareCallback) {
-        FragmentActivity activityTemp = activity.get();
-        if (activityTemp == null)
+        if (activity == null)
             return this;
         this.mPrepareCallback = mPrepareCallback;
         isReturn = false;
-        activityTemp.postponeEnterTransition();//其start在fragment里呢
+        activity.postponeEnterTransition();//其start在fragment里呢
         if (layoutResID != -1)
-            activityTemp.setContentView(layoutResID);
+            activity.setContentView(layoutResID);
         else if (layoutView != null)
-            activityTemp.setContentView(layoutView);
+            activity.setContentView(layoutView);
         else
             throw new IllegalStateException("please use method:setContentView");
 
         if (ids != null) {
             views = new View[ids.length];
             for (int i = 0; i < ids.length; i++) {
-                views[i] = activityTemp.findViewById(ids[i]);
+                views[i] = activity.findViewById(ids[i]);
             }
         }
         if (views != null)
             pairs(null, views);
 
-        setEnterSharedElementCallback(activityTemp);
+        setEnterSharedElementCallback(activity);
         if (mPrepareCallback != null)
             mPrepareCallback.prepare(mPrepare);
         else
-            activityTemp.startPostponedEnterTransition();
+            activity.startPostponedEnterTransition();
         return this;
     }
 

@@ -40,13 +40,12 @@ public class From extends Parent {
 
 
     From onActivityReenter(int resultCode, Intent data) {
-        FragmentActivity activityTemp = activity.get();
-        if (activityTemp == null)
+        if (activity == null)
             return this;
 
         isReturn = true;
         if (mPrepareCallback != null) {
-            activityTemp.postponeEnterTransition();
+            activity.postponeEnterTransition();
             mPrepareCallback.prepare(resultCode, data, mPrepare);
         }
         return this;
@@ -79,17 +78,16 @@ public class From extends Parent {
     }
 
     public From go(Intent intent) {
-        FragmentActivity activityTemp = activity.get();
-        if (activityTemp == null)
+        if (activity == null)
             return this;
 
         this.intent = intent;
         isReturn = false;
-        setExitSharedElementCallback(activityTemp);
+        setExitSharedElementCallback(activity);
         if (ids != null) {
             views = new View[ids.length];
             for (int i = 0; i < ids.length; i++) {
-                views[i] = activityTemp.findViewById(ids[i]);
+                views[i] = activity.findViewById(ids[i]);
             }
         }
 
@@ -97,12 +95,12 @@ public class From extends Parent {
             Pair<View, String>[] sharedElements = new Pair[views.length];
             for (int i = 0; i < views.length; i++)
                 sharedElements[i] = Pair.create(views[i], getShareNameByIndex(i));
-            activityTemp.startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(activityTemp, sharedElements).toBundle());
+            activity.startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(activity, sharedElements).toBundle());
         } else {
             Log.i("Tag", "没有共享元素");
-            activityTemp.startActivity(intent,
-                    ActivityOptions.makeSceneTransitionAnimation(activityTemp).toBundle());
+            activity.startActivity(intent,
+                    ActivityOptions.makeSceneTransitionAnimation(activity).toBundle());
         }
 
 
